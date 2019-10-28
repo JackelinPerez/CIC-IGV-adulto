@@ -1,0 +1,12 @@
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" class="formulario d-flex flex-column justify-content-center">
+    <article class="jumbotron form-group d-flex flex-column justify-content-center text-center mx-auto">
+        Hola, Bienvenid@ <br>
+    </article>
+    <div class="form-group mx-auto">
+        <input id="name" type="text" formControlName="name" class="form-control text-center" placeholder="¿Cuál es tu nombre?">
+    </div>
+    <div class="form-group mx-auto">
+        <input id="age" type="text" formControlName="age" class="form-control text-center" placeholder="¿Cuál es tu edad?">
+    </div>  
+    <button class="button btn btn-outline-info mx-auto rounded" type="submit" >Guardar</button>
+</form>
