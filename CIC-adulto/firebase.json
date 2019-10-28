@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/CIC-adulto",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
