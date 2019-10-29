@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { environment} from '../environments/environment';
 import { AngularFireModule} from 'angularfire2';
-import { AngularFireDatabase} from "angularfire2/database";
+import { AngularFireDatabase, AngularFireDatabaseModule} from "@angular/fire/database";
 import { EntryFormComponent } from './entry-form/entry-form.component';
 import { ExitFormComponent } from './exit-form/exit-form.component';
 import { Screen0Component } from './entry-form/screen0/screen0.component';
@@ -47,8 +47,9 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
-  providers: [ AngularFireDatabase],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
