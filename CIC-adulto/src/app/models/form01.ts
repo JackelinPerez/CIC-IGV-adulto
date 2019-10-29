@@ -1,4 +1,14 @@
 export class Form01 {
-    name: string;
-    age: string;
+    salud: string;
+    ropa: string;
+    calzado: string;
+    electro: string;
+    cines: string;
+    restaurantes: string;
+    bares: string;
+    discotecas: string;
+    luz: string
+    agua: string;
+    telefonoFijo: string;
+    telefonoMovil: string;
 }

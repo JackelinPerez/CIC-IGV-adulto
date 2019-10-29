@@ -1,1 +1,16 @@
-<p>screen3 works!</p>
+<section>
+        <div class="mx-auto" class="d-flex flex-column justify-content-center">
+                <label for="">¿Harías aportes voluntarios (S/.)?</label><br>
+                <div *ngIf="controlInput == 0">
+                    <button class="button btn btn-outline-info mx-auto rounded" (click)="acepto()">SI</button>
+                    <button class="button btn btn-outline-info mx-auto rounded" (click)="rechazo()">NO</button>
+                </div>
+        </div>
+        
+        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" class="formulario d-flex flex-column justify-content-center" *ngIf="controlInput != 0">
+                <div class="form-group mx-auto">
+                    <input id="aporte_voluntario" type="text" formControlName="aporte_voluntario" class="form-control text-center" placeholder="¿Cuánto ()?">
+                </div>
+                <button class="button btn btn-outline-info mx-auto rounded" type="submit" >Guardar</button>
+        </form>
+</section>

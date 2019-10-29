@@ -1,1 +1,42 @@
-<p>screen1 works!</p>
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" class="formulario d-flex flex-column justify-content-center">
+    <article class="jumbotron form-group d-flex flex-column justify-content-center text-center mx-auto">
+        Aproximadamente, ¿Cuánto gastas al mes (S/.)? <br>
+    </article>
+    <div class="form-group mx-auto">
+        <input id="salud" type="number" formControlName="salud" class="form-control text-center" placeholder="Salud">
+    </div>
+    <div class="form-group mx-auto">
+        <input id="ropa" type="number" formControlName="ropa" class="form-control text-center" placeholder="Ropa">
+    </div>
+    <div class="form-group mx-auto">
+        <input id="calzado" type="number" formControlName="calzado" class="form-control text-center" placeholder="Calzado">
+    </div>
+    <div class="form-group mx-auto">
+        <input id="electro" type="number" formControlName="electro" class="form-control text-center" placeholder="Electrodosmesticos">
+    </div>
+    <div class="form-group mx-auto">
+        <input id="cines" type="number" formControlName="cines" class="form-control text-center" placeholder="Cines">
+    </div>
+    <div class="form-group mx-auto">
+        <input id="restaurantes" type="number" formControlName="restaurantes" class="form-control text-center" placeholder="Restaurantes">
+    </div>
+    <div class="form-group mx-auto">
+        <input id="bares" type="number" formControlName="bares" class="form-control text-center" placeholder="Bares">
+    </div>
+    <div class="form-group mx-auto">
+        <input id="discotecas" type="number" formControlName="discotecas" class="form-control text-center" placeholder="Discotecas">
+    </div>
+    <div class="form-group mx-auto">
+        <input id="luz" type="number" formControlName="luz" class="form-control text-center" placeholder="Luz">
+    </div>
+    <div class="form-group mx-auto">
+        <input id="agua" type="number" formControlName="agua" class="form-control text-center" placeholder="Agua">
+    </div>
+    <div class="form-group mx-auto">
+        <input id="telefonoFijo" type="number" formControlName="telefonoFijo" class="form-control text-center" placeholder="Telefono fijo + cable">
+    </div>
+    <div class="form-group mx-auto">
+        <input id="telefonoMovil" type="number" formControlName="telefonoMovil" class="form-control text-center" placeholder="Telefono movil">
+    </div>      
+    <button class="button btn btn-outline-info mx-auto rounded" type="submit" >Guardar</button>
+</form>

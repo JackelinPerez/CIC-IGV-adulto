@@ -8,10 +8,11 @@ import { FormBuilder} from '@angular/forms';
 // agregando formulario
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 //imcluyendo clases form
-import { Form01} from '../../models/form01';
+import { Form00} from '../../models/form00';
 
 //incluyendo servicio
 import { RealtimeService} from '../../services/firebase/realtime.service';
+import { RxjsService} from '../../services/rxjs/rxjs.service';
 
 //incluyendo angular
 import { AngularFireDatabase, AngularFireList} from '@angular/fire/database';
@@ -23,23 +24,24 @@ import { AngularFireDatabase, AngularFireList} from '@angular/fire/database';
 })
 export class Screen0Component implements OnInit {
 
-  checkoutForm_: Form01 = {
-    name: '',
-    age: '',
+  checkoutForm_: Form00 = {
+    nombre: '',
+    edad: '',
   };
+  checkoutForm; 
   public newFormIndp = new FormGroup({
-    name: new FormControl('', Validators.required),
-    age: new FormControl('', Validators.required),
+    nombre: new FormControl('', Validators.required),
+    edad: new FormControl('', Validators.required),
     id: new FormControl(''),
   });
   //obteniendo propiedad del servicio de firebase Realtime
   itemsRef: AngularFireList<any>;
 
-  checkoutForm; 
   constructor(
     private formBuilder:FormBuilder,
     private router: Router,
     private realtimeService:RealtimeService,
+    private rxjsService:RxjsService,
     private db: AngularFireDatabase
   ) {
     this.checkoutForm = this.formBuilder.group(this.checkoutForm_);
@@ -49,8 +51,8 @@ export class Screen0Component implements OnInit {
   ngOnInit() {
   }
   onSubmit(customerData:any) {
-    this.realtimeService.changeScreen0({...customerData});
-    this.realtimeService.createForm(this.itemsRef , {...customerData});
+    this.rxjsService.changeScreen0({...customerData});
+    // this.realtimeService.createForm(this.itemsRef , {...customerData});
     this.router.navigateByUrl('/pantalla_1');    
   }
 }

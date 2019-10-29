@@ -1,1 +1,24 @@
-<p>screen2 works!</p>
+<section class="d-flex flex-column justify-content-center">
+    <div class="mx-auto">
+        <label for="">Tu consumo mensual: S/{{exitString.consumo_Mensual}}</label>
+    </div>
+
+    <div class="mx-auto">
+        <label for="">Tu ganancia mensual: S/{{exitString.ganancia_igv2_mensual}}</label>
+    </div>
+            
+    <div class="mx-auto">
+        <label for="">A los 65 años tendras: S/{{exitString.ganancia_igv2_pension}}</label>
+    </div>
+            
+    <div class="mx-auto">
+        <label for="">Con esto recibiras una pension: S/{{exitString.pension_igv2}}</label>
+    </div>
+            
+    <div class="mx-auto">
+        <label for="">Te parece suficiente?</label><br>
+        <button class="button btn btn-outline-info mx-auto rounded" (click)="acepto()">SI</button>
+        <button class="button btn btn-outline-info mx-auto rounded" (click)="rechazo()">NO</button>
+    </div>
+</section>
+
