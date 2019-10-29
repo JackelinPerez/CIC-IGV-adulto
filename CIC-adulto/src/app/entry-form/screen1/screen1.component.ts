@@ -19,14 +19,14 @@ import { RxjsService} from '../../services/rxjs/rxjs.service';
 export class Screen1Component implements OnInit {
 
   checkoutForm_: Form01 = {
+    aborrotes: '',
     salud: '',
     ropa: '',
     calzado: '',
     electro: '',
     cines: '',
     restaurantes: '',
-    bares: '',
-    discotecas: '',
+    bares_discotecas: '',
     luz: '',
     agua: '',
     telefonoFijo: '',
@@ -50,7 +50,12 @@ export class Screen1Component implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(customerData:any) {
+  onSubmit(customerDataAux:any) {
+    const customerData = Object.keys(customerDataAux).reduce((acum, ele )=>{
+      acum[ele] = customerDataAux[ele];
+      if((acum[ele] === NaN) || !acum[ele]) acum[ele] = 0;
+      return acum;
+    },{});
     this.rxjsService.changeScreen1({...customerData});
     this.router.navigateByUrl('/pantalla_2');    
   }

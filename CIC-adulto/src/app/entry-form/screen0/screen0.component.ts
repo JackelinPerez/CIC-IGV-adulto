@@ -35,22 +35,28 @@ export class Screen0Component implements OnInit {
     id: new FormControl(''),
   });
   //obteniendo propiedad del servicio de firebase Realtime
-  itemsRef: AngularFireList<any>;
+  // itemsRef: AngularFireList<any>;
 
   constructor(
     private formBuilder:FormBuilder,
     private router: Router,
-    private realtimeService:RealtimeService,
+    // private realtimeService:RealtimeService,
     private rxjsService:RxjsService,
-    private db: AngularFireDatabase
+    // private db: AngularFireDatabase
   ) {
     this.checkoutForm = this.formBuilder.group(this.checkoutForm_);
-    this.itemsRef = db.list('formulario');
+    // this.itemsRef = db.list('formulario');
   }
 
   ngOnInit() {
   }
-  onSubmit(customerData:any) {
+  onSubmit(customerDataAux:any) {
+    const customerData = Object.keys(customerDataAux).reduce((acum, ele )=>{
+      acum[ele] = customerDataAux[ele];
+      if(customerDataAux[ele] === NaN)
+      acum[ele] = 0;
+      return acum;
+    },{});
     this.rxjsService.changeScreen0({...customerData});
     // this.realtimeService.createForm(this.itemsRef , {...customerData});
     this.router.navigateByUrl('/pantalla_1');    

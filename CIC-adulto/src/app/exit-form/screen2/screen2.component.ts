@@ -50,6 +50,10 @@ export class Screen2Component implements OnInit {
 
 
   exitScreen2(result01:any, result00:any){
+    let ganancia_igv2_pension = 0;
+    let pension_igv2 = 0;
+    let aporte_voluntario = 0;
+
     const consumo_Mensual = Object.keys(result01).reduce((acum, ele )=>{
       acum = acum + parseInt(result01[ele]);
       return acum;
@@ -61,11 +65,13 @@ export class Screen2Component implements OnInit {
     },0);
 
 
-    const ganancia_igv2_pension = (65- parseInt(result00.edad))*12*ganancia_igv2_mensual;
-    const pension_igv2 = ganancia_igv2_pension/120;
-    const aporte_voluntario = 0;
-    
+    if(ganancia_igv2_mensual !== 0) {
+      ganancia_igv2_pension = (65- parseInt(result00.edad))*12*ganancia_igv2_mensual;
+      pension_igv2 = ganancia_igv2_pension/120;
+    }
+
     console.log('Gasto total= '+consumo_Mensual);
+
     return{
       consumo_Mensual,
       ganancia_igv2_mensual,
@@ -85,7 +91,6 @@ export class Screen2Component implements OnInit {
   }
 
   acepto() {
-
     this.realtimeService.createForm(this.itemsRef , {...this.resultTotal}); 
     this.router.navigateByUrl('/pantalla_0');
   }

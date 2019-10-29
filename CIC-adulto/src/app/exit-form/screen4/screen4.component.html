@@ -1,1 +1,21 @@
-<p>screen4 works!</p>
+<section class="d-flex flex-column justify-content-center text-center">
+    <article class="">
+        <label for="">Mensualmente acumulas: </label><br>
+        <label for=""><strong>S/{{resultEnd.acumMouth}}</strong></label>
+    </article>
+<!-- 
+    <div class="mx-auto">
+        <label for="">Por tus compras Ganastes: </label><br>
+        <label for=""><strong>S/{{resultEnd.ganancia_igv2_mensual}}</strong></label>
+    </div> -->
+
+    <div class="mx-auto">
+        <label for="">A los 65 años tendrás una pension:</label><br>
+        <label for=""><strong> S/{{resultEnd.pension_igv2}}</strong></label>
+    </div><br>
+
+    <div class="mx-auto">
+        <button class="button btn btn-outline-info mx-auto rounded" (click)="end()">Salir</button>
+    </div>
+</section>
+

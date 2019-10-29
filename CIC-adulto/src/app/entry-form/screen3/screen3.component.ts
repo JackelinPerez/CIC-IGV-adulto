@@ -65,12 +65,17 @@ export class Screen3Component implements OnInit {
   }
 
   onSubmit(customerData:any){
-
+    let ganancia_igv2_pension = 0;
+    let pension_igv2 = 0;
+    
     this.rxjsService.currentForm2.subscribe((result2 :any)=>{
       this.result_total= {...result2};
       const aporte_voluntario = parseInt(customerData.aporte_voluntario);
-      const ganancia_igv2_pension = (65- this.result_total.edad)*12*(this.result_total.ganancia_igv2_mensual + aporte_voluntario);
-      const pension_igv2 = ganancia_igv2_pension/120;
+
+      if(this.result_total.ganancia_igv2_mensual!==NaN){
+        ganancia_igv2_pension = (65- this.result_total.edad)*12*(this.result_total.ganancia_igv2_mensual + aporte_voluntario);
+        pension_igv2 = ganancia_igv2_pension/120;
+      }
 
       const exitPension = {...this.result_total, aporte_voluntario, ganancia_igv2_pension, pension_igv2};
       

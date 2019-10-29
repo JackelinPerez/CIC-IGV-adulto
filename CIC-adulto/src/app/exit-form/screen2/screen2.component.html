@@ -1,24 +1,26 @@
-<section class="d-flex flex-column justify-content-center">
+<section class="d-flex flex-column justify-content-center text-center">
+    <article class="">
+        <label for="">Mis compras del mes: </label><br>
+        <label for=""><strong>S/{{exitString.consumo_Mensual}}</strong></label>
+    </article>
+
     <div class="mx-auto">
-        <label for="">Tu consumo mensual: S/{{exitString.consumo_Mensual}}</label>
+        <label for="">Por tus compras Ganastes: </label><br>
+        <label for=""><strong>S/{{exitString.ganancia_igv2_mensual}}</strong></label>
     </div>
 
     <div class="mx-auto">
-        <label for="">Tu ganancia mensual: S/{{exitString.ganancia_igv2_mensual}}</label>
-    </div>
-            
-    <div class="mx-auto">
-        <label for="">A los 65 años tendras: S/{{exitString.ganancia_igv2_pension}}</label>
-    </div>
-            
-    <div class="mx-auto">
-        <label for="">Con esto recibiras una pension: S/{{exitString.pension_igv2}}</label>
-    </div>
-            
-    <div class="mx-auto">
-        <label for="">Te parece suficiente?</label><br>
-        <button class="button btn btn-outline-info mx-auto rounded" (click)="acepto()">SI</button>
-        <button class="button btn btn-outline-info mx-auto rounded" (click)="rechazo()">NO</button>
-    </div>
+        <label for="">Si mantienes esta frecuencia de compras, a los 65 años recibirás una pension:</label><br>
+        <label for=""><strong> S/{{exitString.pension_igv2}}</strong></label>
+    </div><br>
+
+    <div class="d-flex flex-column mx-auto justify-content-center text-center">
+        <label class=""> <strong>Te parece suficiente?</strong></label><br>
+        <button class="button btn btn-outline-info  rounded" (click)="rechazo()">NO</button><br>
+        <button class="button btn btn-outline-info  rounded" (click)="acepto()">SI</button>
+    </div>    
 </section>
+
+
+
 
