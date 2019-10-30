@@ -1,8 +1,8 @@
 export class Form01 {
-    aborrotes: string;
+    aborrotes_limpieza: string;
     salud: string;
-    ropa: string;
-    calzado: string;
+    ropa_calzado: string;
+    gasolina: string;
     electro: string;
     cines: string;
     restaurantes: string;
@@ -11,4 +11,5 @@ export class Form01 {
     agua: string;
     telefonoFijo: string;
     telefonoMovil: string;
+    otros: string;
 }

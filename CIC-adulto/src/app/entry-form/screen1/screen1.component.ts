@@ -19,10 +19,10 @@ import { RxjsService} from '../../services/rxjs/rxjs.service';
 export class Screen1Component implements OnInit {
 
   checkoutForm_: Form01 = {
-    aborrotes: '',
+    aborrotes_limpieza: '',
     salud: '',
-    ropa: '',
-    calzado: '',
+    ropa_calzado: '',
+    gasolina: '',
     electro: '',
     cines: '',
     restaurantes: '',
@@ -31,6 +31,7 @@ export class Screen1Component implements OnInit {
     agua: '',
     telefonoFijo: '',
     telefonoMovil: '',
+    otros:''
   };
   checkoutForm; 
   public newFormIndp = new FormGroup({
