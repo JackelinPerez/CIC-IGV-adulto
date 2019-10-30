@@ -38,7 +38,7 @@ export class Screen2Component implements OnInit {
       this.rxjsService.currentForm0.subscribe((result0 :any)=>{
         this.exit = this.exitScreen2(result1, result0);
         this.exitString = this.convertionTostring(this.exit);
-        this.resultTotal = {... result0, ... this.exit};
+        this.resultTotal = {... result0, ... this.exit, consumo: {...result1}};
       });
     });
 
