@@ -11,5 +11,6 @@ export class Form01 {
     agua: string;
     telefonoFijo: string;
     telefonoMovil: string;
+    consumoNegocio: string;
     otros: string;
 }

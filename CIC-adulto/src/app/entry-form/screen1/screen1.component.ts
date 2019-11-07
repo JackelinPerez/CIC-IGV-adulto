@@ -31,6 +31,7 @@ export class Screen1Component implements OnInit {
     agua: '',
     telefonoFijo: '',
     telefonoMovil: '',
+    consumoNegocio: '',
     otros:''
   };
   checkoutForm; 

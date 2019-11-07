@@ -27,7 +27,8 @@ export class Screen0Component implements OnInit {
   checkoutForm_: Form00 = {
     nombre: '',
     edad: '',
-    distrito: ''
+    distrito: '',
+    oficio: ''
   };
   checkoutForm; 
   public newFormIndp = new FormGroup({

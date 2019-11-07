@@ -27,7 +27,7 @@ export class Screen4Component implements OnInit {
     private rxjsService:RxjsService,
     private realtimeService:RealtimeService,
     private db: AngularFireDatabase,
-  ) { this.itemsRef = db.list('formulario');}
+  ) { this.itemsRef = db.list('formulario_new');}
 
   ngOnInit() {
     this.rxjsService.currentForm3.subscribe((resultTotal :any)=>{

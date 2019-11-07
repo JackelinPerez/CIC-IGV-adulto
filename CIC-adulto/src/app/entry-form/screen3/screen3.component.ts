@@ -28,8 +28,18 @@ export class Screen3Component implements OnInit {
   result_total:any;
 
   checkoutForm_: any = {
-    aporte_voluntario: ''
+    aporte_voluntario: '',
+    voluntaryContributions: ''
   };
+
+  voluntaryContributions: any[] = [
+    { value: 50 },
+    { value: 80 },
+    { value: 110 },
+ ];
+
+ disbursementYears_:any = 'N° ';
+
   checkoutForm; 
   public newFormIndp = new FormGroup({
     nombre: new FormControl('', Validators.required),
@@ -47,7 +57,7 @@ export class Screen3Component implements OnInit {
     private realtimeService:RealtimeService
   ) {
     this.checkoutForm = this.formBuilder.group(this.checkoutForm_);
-    this.itemsRef = db.list('formulario');
+    this.itemsRef = db.list('formulario_new');
    }
 
   ngOnInit() {
@@ -63,6 +73,12 @@ export class Screen3Component implements OnInit {
     });
     this.router.navigateByUrl('/pantalla_0');
   }
+
+  onChangeYearsDisbursement(newValue:any){
+    this.disbursementYears_ = newValue;
+    console.log('valor selec= ' + this.disbursementYears_);
+    
+  }   
 
   onSubmit(customerData:any){
     let ganancia_igv2_pension = 0;
@@ -87,8 +103,6 @@ export class Screen3Component implements OnInit {
         console.log(ele +': '+this.result_total[ele]);
       });
     });
-
-    
 
     this.router.navigateByUrl('/pantalla_4');
   }

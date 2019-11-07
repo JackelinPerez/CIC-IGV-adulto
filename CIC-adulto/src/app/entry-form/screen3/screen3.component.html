@@ -8,9 +8,13 @@
         </div>
         
         <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" class="formulario d-flex flex-column justify-content-center" *ngIf="controlInput != 0">
-                <div class="form-group mx-auto">
+                <!-- <div class="form-group mx-auto">
                     <input id="aporte_voluntario" type="text" formControlName="aporte_voluntario" class="form-control text-center" placeholder="¿Cuánto (S/.)?">
-                </div>
+                </div> -->
+                <select id="voluntaryContributions" formControlName="voluntaryContributions" class="custom-select form-group text-center"(change)="onChangeYearsDisbursement($event.target.value)" [value]="voluntaryContributions[0].value">
+                    <option *ngFor= "let voluntaryContribution of voluntaryContributions" class="form-control text-center" [value]="voluntaryContribution.value"> S/.{{voluntaryContribution.value}}</option>
+                </select>
+
                 <button class="button btn btn-outline-info mx-auto rounded" type="submit" >Guardar</button>
         </form>
 </section>
