@@ -96,8 +96,8 @@ export class Screen3Component implements OnInit {
     let ganancia_igv2_pension = 0;
     let pension_igv2 = 0;
     
-    this.rxjsService.currentForm2.subscribe((result2 :any)=>{
-      this.result_total= {...result2};
+    // this.rxjsService.currentForm2.subscribe((result2 :any)=>{
+      // this.result_total= {...result2};
       const aporte_voluntario = parseInt(customerData.aporte_voluntario);
 
       if(this.result_total.ganancia_igv2_mensual!==NaN){
@@ -117,7 +117,7 @@ export class Screen3Component implements OnInit {
       // Object.keys(this.result_total).forEach(ele => {
       //   console.log(ele +': '+this.result_total[ele]);
       // });
-    });
+    // });
 
     this.router.navigateByUrl('/pantalla_4');
   }
