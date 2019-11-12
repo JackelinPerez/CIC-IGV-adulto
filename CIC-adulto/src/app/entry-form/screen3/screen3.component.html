@@ -6,9 +6,10 @@
                 <button class="button btn btn-outline-info  rounded" (click)="acepto()">SI</button> -->
 
                 <div *ngIf="controlInput == 0" class="d-flex flex-column mx-auto">
-                        <label class=""> <strong>Para alcanzar una pension de S/500.00</strong></label><br>
-                        <label class=""> <strong>Necesitas realizar aportes mínimos:</strong></label><br>
-                        <label class=""> <strong>S/{{aporteMinimo}}</strong></label><br>                    
+                        <label class="">Para alcanzar una pension:</label><br>
+                        <label class="bg-info text-white rounded"> <strong>S/500.00</strong></label><br>
+                        <label class="">Necesitas realizar aportes mínimos:</label><br>
+                        <label class="bg-warning rounded"> <strong>S/{{aporteMinimo}}</strong></label><br>                    
                     <label class=""> <strong>Estas de acuerdo?</strong></label><br>
                     <button class="button btn btn-outline-info rounded" (click)="acepto()">SI</button><br>
                     <button class="button btn btn-outline-info rounded" (click)="rechazo()">NO</button>
