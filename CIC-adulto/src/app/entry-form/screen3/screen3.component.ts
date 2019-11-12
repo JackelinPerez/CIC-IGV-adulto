@@ -27,6 +27,7 @@ export class Screen3Component implements OnInit {
   controlInput = 0;
   result_total:any;
   aporteMinimo:any;
+  pensionSuperior: any;
 
   checkoutForm_: any = {
     aporte_voluntario: '',
@@ -64,7 +65,13 @@ export class Screen3Component implements OnInit {
   ngOnInit() {
     this.rxjsService.currentForm2.subscribe((result2 :any)=>{
       this.result_total= {...result2};
-      this.aporteMinimo = this.rxjsService.convertionTostring({...result2}).aporteMin_voluntario;
+      if(this.result_total.aporteMin_voluntario <= 0) {
+        this.controlInput = 3;
+        this.pensionSuperior = this.rxjsService.convertionTostring({...result2}).pension_igv2;
+      }
+      else{
+        this.aporteMinimo = this.rxjsService.convertionTostring({...result2}).aporteMin_voluntario;
+      }
     })
   }
 

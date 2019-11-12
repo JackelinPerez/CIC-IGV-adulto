@@ -14,11 +14,18 @@
                     <button class="button btn btn-outline-info rounded" (click)="acepto()">SI</button><br>
                     <button class="button btn btn-outline-info rounded" (click)="rechazo()">NO</button>
                 </div>
+
+                <div *ngIf="controlInput == 3" class="d-flex flex-column mx-auto">
+                        <label class="">Fabuloso, alcanzaste una pension:</label><br>
+                        <label class="bg-warning rounded"> <strong>S/{{pensionSuperior}}</strong></label><br> 
+                        <label class=""> <strong>Estas de acuerdo?</strong></label><br>
+                        <button class="button btn btn-outline-info rounded" (click)="acepto()">SI</button><br>
+                        <button class="button btn btn-outline-info rounded" (click)="rechazo()">NO</button>
+                </div>
         </div>
         
-        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" class="formulario d-flex flex-column justify-content-center text-center" *ngIf="controlInput != 0">
-
-                <label class=""> <strong>Te gustaria elevar tu pensión de S/500? </strong></label><br>
+        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" class="formulario d-flex flex-column justify-content-center text-center" *ngIf="(controlInput != 3) && (controlInput != 0)">
+                <label class=""> <strong>Te gustaria elevar tu pensión? </strong></label><br>
 
                 <div *ngIf="controlInput == 1" class="d-flex flex-column mx-auto">
                     <button class="button btn btn-outline-info rounded" (click)="acepto_()">SI</button><br>
