@@ -26,6 +26,7 @@ export class Screen3Component implements OnInit {
 
   controlInput = 0;
   result_total:any;
+  aporteMinimo:any;
 
   checkoutForm_: any = {
     aporte_voluntario: '',
@@ -61,24 +62,35 @@ export class Screen3Component implements OnInit {
    }
 
   ngOnInit() {
-
+    this.rxjsService.currentForm2.subscribe((result2 :any)=>{
+      this.result_total= {...result2};
+      this.aporteMinimo = this.rxjsService.convertionTostring({...result2}).aporteMin_voluntario;
+    })
   }
+
   acepto() {
     this.controlInput = 1;
   }
 
   rechazo() {
-    this.rxjsService.currentForm2.subscribe((result2 :any)=>{
-      this.realtimeService.createForm(this.itemsRef , {...result2}); 
-    });
+    this.realtimeService.createForm(this.itemsRef , {...this.result_total, aporteFacultativo: 'No'}); 
     this.router.navigateByUrl('/pantalla_0');
   }
 
-  onChangeYearsDisbursement(newValue:any){
-    this.disbursementYears_ = newValue;
-    console.log('valor selec= ' + this.disbursementYears_);
+  acepto_() {
+    this.controlInput = 2;
+  }
+
+  rechazo_() {
+    this.realtimeService.createForm(this.itemsRef , {...this.result_total, aporteFacultativo: 'Si'}); 
+    this.router.navigateByUrl('/pantalla_0');
+  }  
+
+  // onChangeYearsDisbursement(newValue:any){
+  //   this.disbursementYears_ = newValue;
+  //   console.log('valor selec= ' + this.disbursementYears_);
     
-  }   
+  // }   
 
   onSubmit(customerData:any){
     let ganancia_igv2_pension = 0;
@@ -89,19 +101,22 @@ export class Screen3Component implements OnInit {
       const aporte_voluntario = parseInt(customerData.aporte_voluntario);
 
       if(this.result_total.ganancia_igv2_mensual!==NaN){
-        ganancia_igv2_pension = (65- this.result_total.edad)*12*(this.result_total.ganancia_igv2_mensual + aporte_voluntario);
-        pension_igv2 = ganancia_igv2_pension/120;
+        // ganancia_igv2_pension = (65- this.result_total.edad)*12*(this.result_total.ganancia_igv2_mensual + aporte_voluntario);
+        // pension_igv2 = ganancia_igv2_pension/120;
+        pension_igv2 = this.rxjsService.calculatePension({
+          edad: this.result_total.edad,
+          aporte: this.result_total.ganancia_igv2_mensual + aporte_voluntario}).igv;
       }
 
-      const exitPension = {...this.result_total, aporte_voluntario, ganancia_igv2_pension, pension_igv2};
+      const exitPension = {...this.result_total, aporte_voluntario, ganancia_igv2_pension, pension_igv2, aporteFacultativo: 'Si'};
       
       this.realtimeService.createForm(this.itemsRef , {...exitPension});
       this.rxjsService.changeScreen3({...exitPension});
       
-      console.log('por aqui!-----------------------');
-      Object.keys(this.result_total).forEach(ele => {
-        console.log(ele +': '+this.result_total[ele]);
-      });
+      // console.log('por aqui!-----------------------');
+      // Object.keys(this.result_total).forEach(ele => {
+      //   console.log(ele +': '+this.result_total[ele]);
+      // });
     });
 
     this.router.navigateByUrl('/pantalla_4');

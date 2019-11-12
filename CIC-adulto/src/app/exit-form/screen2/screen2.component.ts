@@ -37,21 +37,22 @@ export class Screen2Component implements OnInit {
     this.rxjsService.currentForm1.subscribe((result1 :any)=>{
       this.rxjsService.currentForm0.subscribe((result0 :any)=>{
         this.exit = this.exitScreen2(result1, result0);
-        this.exitString = this.convertionTostring(this.exit);
+        this.exitString = this.rxjsService.convertionTostring(this.exit);
         this.resultTotal = {... result0, ... this.exit, consumo: {...result1}};
       });
     });
 
-    console.log('-----------------------------------------');
-    Object.keys(this.resultTotal).forEach(ele => {
-      console.log(ele +': '+this.resultTotal[ele]);
-    });
+    // console.log('-----------------------------------------');
+    // Object.keys(this.resultTotal).forEach(ele => {
+    //   console.log(ele +': '+this.resultTotal[ele]);
+    // });
   }
 
 
   exitScreen2(result01:any, result00:any){
     let ganancia_igv2_pension = 0;
     let pension_igv2 = 0;
+    let aporteMin_voluntario = 0;
     let aporte_voluntario = 0;
 
     const consumo_Mensual = Object.keys(result01).reduce((acum, ele )=>{
@@ -67,7 +68,8 @@ export class Screen2Component implements OnInit {
 
     if(ganancia_igv2_mensual !== 0) {
       ganancia_igv2_pension = (65- parseInt(result00.edad))*12*ganancia_igv2_mensual;
-      pension_igv2 = ganancia_igv2_pension/120;
+      pension_igv2 = this.rxjsService.calculatePension({edad: parseInt(result00.edad),aporte: ganancia_igv2_mensual}).igv; 
+      aporteMin_voluntario = this.rxjsService.calculatePension({edad: parseInt(result00.edad),aporte: ganancia_igv2_mensual}).min; 
     }
 
     console.log('Gasto total= '+consumo_Mensual);
@@ -77,26 +79,32 @@ export class Screen2Component implements OnInit {
       ganancia_igv2_mensual,
       ganancia_igv2_pension,
       pension_igv2,
+      aporteMin_voluntario,
       aporte_voluntario
     };
   }
 
-  convertionTostring(objNumber: any){
-    let objNumberAux: any = {...objNumber};
-    let statusOK: any = {};
-    Object.keys(objNumberAux).forEach(ele => {
-      statusOK[ele] = objNumberAux[ele].toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 2});
-    });
-    return statusOK;
-  }
+  // convertionTostring(objNumber: any){
+  //   let objNumberAux: any = {...objNumber};
+  //   let statusOK: any = {};
+  //   Object.keys(objNumberAux).forEach(ele => {
+  //     statusOK[ele] = objNumberAux[ele].toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 2});
+  //   });
+  //   return statusOK;
+  // }
 
-  acepto() {
-    this.realtimeService.createForm(this.itemsRef , {...this.resultTotal}); 
-    this.router.navigateByUrl('/pantalla_0');
-  }
+  // acepto() {
+  //   this.realtimeService.createForm(this.itemsRef , {...this.resultTotal}); 
+  //   this.router.navigateByUrl('/pantalla_0');
+  // }
 
-  rechazo() {
+  // rechazo() {
+  //   this.rxjsService.changeScreen2({...this.resultTotal});
+  //   this.router.navigateByUrl('/pantalla_3');    
+  // }
+
+  siguiente(){
     this.rxjsService.changeScreen2({...this.resultTotal});
-    this.router.navigateByUrl('/pantalla_3');    
+    this.router.navigateByUrl('/pantalla_3');     
   }
 }

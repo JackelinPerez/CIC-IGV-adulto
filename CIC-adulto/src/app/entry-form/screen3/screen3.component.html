@@ -1,20 +1,38 @@
 <section>
-        <div class="d-flex flex-column justify-content-center">
-                <label class="d-flex flex-column mx-auto jumbotron">¿Harías aportes voluntarios (S/.)?</label><br>
+        <div class="d-flex flex-column justify-content-center text-center">
+                <!-- <label class="d-flex flex-column mx-auto jumbotron">¿Harías aportes voluntarios (S/.)?</label><br> -->
+                
+                <!-- <button class="button btn btn-outline-info  rounded" (click)="rechazo()">NO</button><br>
+                <button class="button btn btn-outline-info  rounded" (click)="acepto()">SI</button> -->
+
                 <div *ngIf="controlInput == 0" class="d-flex flex-column mx-auto">
+                        <label class=""> <strong>Para alcanzar una pension de S/500.00</strong></label><br>
+                        <label class=""> <strong>Necesitas realizar aportes mínimos:</strong></label><br>
+                        <label class=""> <strong>S/{{aporteMinimo}}</strong></label><br>                    
+                    <label class=""> <strong>Estas de acuerdo?</strong></label><br>
                     <button class="button btn btn-outline-info rounded" (click)="acepto()">SI</button><br>
                     <button class="button btn btn-outline-info rounded" (click)="rechazo()">NO</button>
                 </div>
         </div>
         
-        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" class="formulario d-flex flex-column justify-content-center" *ngIf="controlInput != 0">
-                <!-- <div class="form-group mx-auto">
-                    <input id="aporte_voluntario" type="text" formControlName="aporte_voluntario" class="form-control text-center" placeholder="¿Cuánto (S/.)?">
-                </div> -->
-                <select id="voluntaryContributions" formControlName="voluntaryContributions" class="custom-select form-group text-center"(change)="onChangeYearsDisbursement($event.target.value)" [value]="voluntaryContributions[0].value">
-                    <option *ngFor= "let voluntaryContribution of voluntaryContributions" class="form-control text-center" [value]="voluntaryContribution.value"> S/.{{voluntaryContribution.value}}</option>
-                </select>
+        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)" class="formulario d-flex flex-column justify-content-center text-center" *ngIf="controlInput != 0">
 
-                <button class="button btn btn-outline-info mx-auto rounded" type="submit" >Guardar</button>
+                <label class=""> <strong>Te gustaria elevar tu pensión de S/500? </strong></label><br>
+
+                <div *ngIf="controlInput == 1" class="d-flex flex-column mx-auto">
+                    <button class="button btn btn-outline-info rounded" (click)="acepto_()">SI</button><br>
+                    <button class="button btn btn-outline-info rounded" (click)="rechazo_()">NO</button>
+                </div>
+
+                <div *ngIf="controlInput == 2" class="form-group mx-auto">
+                    <input id="aporte_voluntario" type="text" formControlName="aporte_voluntario" class="form-control text-center" placeholder="Aporte Mayor S/{{aporteMinimo}}"><br>
+                    <button class="button btn btn-outline-info mx-auto rounded" type="submit" >Guardar</button>
+                </div>
+
+                <!-- <select id="voluntaryContributions" formControlName="voluntaryContributions" class="custom-select form-group text-center"(change)="onChangeYearsDisbursement($event.target.value)" [value]="voluntaryContributions[0].value">
+                    <option *ngFor= "let voluntaryContribution of voluntaryContributions" class="form-control text-center" [value]="voluntaryContribution.value"> S/.{{voluntaryContribution.value}}</option>
+                </select> -->
+
+
         </form>
 </section>

@@ -51,7 +51,18 @@ export class Screen0Component implements OnInit {
   }
 
   ngOnInit() {
+    const pension= {
+      edad: 50,
+      aporte: 20
+    }
+  
+    const resultPension = this.rxjsService.calculatePension(pension);
+    // console.log('por aqui resulto!-----------------------');
+    Object.keys(resultPension).forEach(ele => {
+      console.log('Pension_'+ele +': '+resultPension[ele]);
+    });  
   }
+
   onSubmit(customerDataAux:any) {
     const customerData = Object.keys(customerDataAux).reduce((acum, ele )=>{
       acum[ele] = customerDataAux[ele];

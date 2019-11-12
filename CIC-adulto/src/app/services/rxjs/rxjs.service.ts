@@ -46,5 +46,28 @@ export class RxjsService {
   
   changeScreen4(value: any){
     this.formScreen4.next(value);
-  } 
+  }
+
+  convertionTostring(objNumber: any){
+    let objNumberAux: any = {...objNumber};
+    let statusOK: any = {};
+    Object.keys(objNumberAux).forEach(ele => {
+      statusOK[ele] = objNumberAux[ele].toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 2});
+    });
+    return statusOK;
+  }  
+
+  calculatePension(dataUser:any){
+    let mesesAportar = (65-dataUser.edad)*12;
+    const interes = 0.03/12;
+    const pensionMinima = 500;
+    let pension = {
+      igv: 0,
+      min: 0
+    };
+    pension.igv =((dataUser.aporte)*(Math.pow((1+interes),mesesAportar)-1)/interes)/120;
+    pension.min = ((pensionMinima*120*interes)/(Math.pow((1+interes),mesesAportar)-1))-dataUser.aporte;
+    return pension;
+  }
+
 }

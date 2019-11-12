@@ -36,7 +36,9 @@ export class Screen4Component implements OnInit {
         if(!resultTotal.nombre || !resultTotal.edad)
         statusOK[ele] = resultTotal[ele].toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 2});
       });
-      this.resultEnd = {... resultTotal, acumMouth: resultTotal.ganancia_igv2_mensual + resultTotal.aporte_voluntario};
+      this.resultEnd  = this.rxjsService.convertionTostring({...resultTotal, acumMouth: resultTotal.ganancia_igv2_mensual + resultTotal.aporte_voluntario});
+      // this.resultEnd = {... resultTotal, acumMouth: resultTotal.ganancia_igv2_mensual + resultTotal.aporte_voluntario};
+
     });    
   }
 
